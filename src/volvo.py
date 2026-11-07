@@ -428,8 +428,7 @@ def api_call(url, method, vin, sensor_id=None, force_update=False, key_change=Fa
     elif method == "POST":
         logging.debug(f"Starting {method} call against {url}")
         try:
-            response = session.post(url.format(vin), timeout=20)
-        except requests.exceptions.RequestException as e:
+            response = session.post(url.format(vin), json={}, timeout=20)        except requests.exceptions.RequestException as e:
             logging.error(f"Error getting data from {url} : {e}")
             return None
     else:
